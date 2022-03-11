@@ -1,0 +1,8 @@
+id;nom;description;type_produit;credit;sms;min_appel;go_data;client_id;status
+1;Produit 1;Description du produit;CUSTOM;93245;55726;29563;58092;1;ACTIVE
+2;Produit 2;Description du produit;STANDARD;23283;5187;39721;27610;;ACTIVE
+3;Produit 3;Description du produit;STANDARD;4447;76268;4391;44289;;ACTIVE
+4;Produit 4;Description du produit;CUSTOM;60225;27324;71359;49772;2;ACTIVE
+5;Produit 5;Description du produit;STANDARD;9660;74623;5889;11024;;ACTIVE
+6;Produit 6;Description du produit;STANDARD;21539;32056;42158;2242;;ACTIVE
+7;Produit 7;Description du produit;STANDARD;6710;33255;8089;23045;;ACTIVE

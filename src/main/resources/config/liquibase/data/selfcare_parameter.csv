@@ -1,0 +1,8 @@
+id;category;nom;description;type;valeur;several_values
+1;FREE_GLOBAL;FREE_RAISON_SOCIALE;Raison sociale configurée pour l'entreprise FREE;STRING;FREE Sénégal;false
+2;FREE_GLOBAL;FREE_CALL_CENTER;Numéro de téléphone pour joindre le call center;STRING;88 000 00 00;false
+7;FREE_GLOBAL;FREE_EMAIL;E-mail de contact;STRING;contact@free.sn;false
+3;FREE_GLOBAL;FREE_COMPTE_BANQUE;Informations du compte bancaire;STRING;Compte 321 654 987;true
+4;FREE_GLOBAL;PERIODE_ENVOI_RESSOURCE_MENSUEL;Période d'envoi automatique des ressources par mois (format CRON);PERIODE;0 30 7 1 * ?;false
+5;FREE_GLOBAL;PERIODE_ENVOI_RESSOURCE_HEBDOMADAIRE;Période d'envoi automatique des ressources par semaine  (format CRON);PERIODE;0 30 7 ? * MON;false
+6;FREE_GLOBAL;PERIODE_ENVOI_RESSOURCE_QUOTIDIEN;Période d'envoi automatique des ressources (format CRON);PERIODE;0 30 7 ? * *;false

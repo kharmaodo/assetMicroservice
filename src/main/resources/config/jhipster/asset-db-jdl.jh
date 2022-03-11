@@ -1,0 +1,207 @@
+/***
+ FREE SN B2B Selfcare : ASSET Data Model
+*/
+
+
+/**
+ * Country entity.
+ * @author Ahmadou Diaw
+ */
+entity Country {
+    nom String required,
+    code String required,
+	indicatif String required,
+    devise String required
+}
+
+/**
+ * SelfcareParameter entity.
+ * @author Ahmadou Diaw
+ */
+entity SelfcareParameter {
+	category ParameterCategory required,
+    nom ParameterOption required,
+    description String,
+	type TypeValeur,
+    valeur String,
+    severalValues Boolean
+}
+
+/**
+ * Client entity.
+ * @author Ahmadou Diaw
+ */
+entity Client {
+	code String required unique,
+	raisonSociale String required unique,
+    ninea String required unique,
+    registreComm String,
+    numeroVirtuel String required,
+    telephone String,
+    email String,
+    adresse String,
+    ville String,
+    gestionnaire String,
+    status ObjectStatus required
+}
+
+/**
+ * Ligne entity.
+ * @author Ahmadou Diaw
+ */
+entity Ligne {
+	numero String required unique,
+    imsi String required unique,
+    status ObjectStatus required
+}
+
+/**
+ * Employe entity.
+ * @author Ahmadou Diaw
+ */
+entity Employe {
+	nom String required,
+    prenom String required,
+    fonction String,
+    email String unique,
+    status ObjectStatus required
+}
+
+/**
+ * Groupe entity.
+ * @author Ahmadou Diaw
+ */
+entity Groupe {
+	nom String unique required,
+    description String,
+    periodicite Periodicite,
+    status ObjectStatus required
+}
+
+/**
+ * Solution entity.
+ * @author Ahmadou Diaw
+ */
+entity Solution {
+	nom String required,
+    description String,
+}
+
+/**
+ * Produit entity.
+ * @author Ahmadou Diaw
+ */
+entity Produit {
+	nom String required,
+    description String,
+    typeProduit TypeOffre required,
+    credit Double required,
+    sms Double required,
+    minAppel Double required,
+    goData Double required,
+    status ObjectStatus required
+}
+
+/**
+ * GrilleTarifaire entity.
+ * @author Ahmadou Diaw
+ */
+entity GrilleTarifaire {
+    // credit Integer required
+    typeTarification TypeTarification required,
+    sms Double required,
+    minAppel Double required,
+    goData Double required,
+    status ObjectStatus required
+}
+
+/**
+ * Offre entity.
+ * @author Ahmadou Diaw
+ */
+entity Offre {
+    code String,
+    typeOffre TypeOffre required,
+    modePaiement ModePaiement required,
+    montant Double required,
+    dureeEngagement Integer,
+    status ObjectStatus required
+}
+
+enum ParameterCategory {
+    FREE_GLOBAL, CLIENT
+}
+
+enum Periodicite {
+    MENSUELLE, HEBDOMADAIRE, QUOTIDIEN
+}
+
+enum ParameterOption {
+	FREE_RAISON_SOCIALE,
+    FREE_EMAIL,
+    FREE_CALL_CENTER,
+    FREE_COMPTE_BANQUE,
+    PERIODE_ENVOI_RESSOURCE_MENSUEL,
+    PERIODE_ENVOI_RESSOURCE_HEBDOMADAIRE,
+    PERIODE_ENVOI_RESSOURCE_QUOTIDIEN
+}
+
+enum TypeValeur {
+    PERIODE, DATE, INTEGER, STRING
+}
+
+enum TypeTarification {
+    STANDARD, CUSTOM
+}
+
+enum TypeOffre {
+    STANDARD, CUSTOM
+}
+
+enum ModePaiement {
+    PREPAID, POSTPAID
+}
+
+enum ObjectStatus {
+    ACTIVE, INACTIVE, ARCHIVED
+}
+
+enum ActionStatus {
+    PENDING, INPROGRESS, FAILED, SUCCESS
+}
+
+relationship OneToMany {
+	Country to Client{country},
+	Client{lignes} to Ligne{client},
+	Client{groupes} to Groupe{client},
+	Client{employes} to Employe{client},
+	Groupe{employes} to Employe{groupe},
+	Client{produitsPersonnalises} to Produit{client},
+	Produit{groupes} to Groupe{produit},
+	GrilleTarifaire{offres} to Offre{grilleTarifaire},
+	Offre{lignes} to Ligne{offre}
+}
+
+relationship ManyToMany {
+	Offre{clients} to Client{offres},
+	Offre{produits} to Produit{offres}
+}
+
+relationship OneToOne {
+	Employe{ligne} to Ligne{employe}
+}
+
+
+
+//* Set pagination options
+/*paginate JobHistory, Employee with infinite-scroll*/
+paginate Client with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

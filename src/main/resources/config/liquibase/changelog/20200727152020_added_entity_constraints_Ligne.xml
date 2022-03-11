@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Ligne.
+    -->
+    <changeSet id="20200727152020-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="ligne"
+                                 constraintName="fk_ligne_client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+
+        <addForeignKeyConstraint baseColumnNames="offre_id"
+                                 baseTableName="ligne"
+                                 constraintName="fk_ligne_offre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="offre"/>
+
+        <addForeignKeyConstraint baseColumnNames="ligne_id"
+                                 baseTableName="ligne_services"
+                                 constraintName="fk_ligne_services_ligne_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ligne"/>
+
+        <addForeignKeyConstraint baseColumnNames="services_id"
+                                 baseTableName="ligne_services"
+                                 constraintName="fk_ligne_services_services_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="service"/>
+
+    </changeSet>
+</databaseChangeLog>

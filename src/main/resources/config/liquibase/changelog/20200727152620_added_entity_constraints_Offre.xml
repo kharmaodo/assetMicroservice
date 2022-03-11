@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Offre.
+    -->
+    <changeSet id="20200727152620-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="offre_id"
+                                 baseTableName="offre_clients"
+                                 constraintName="fk_offre_clients_offre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="offre"/>
+
+        <addForeignKeyConstraint baseColumnNames="clients_id"
+                                 baseTableName="offre_clients"
+                                 constraintName="fk_offre_clients_clients_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+        
+        <addForeignKeyConstraint baseColumnNames="offre_id"
+                                 baseTableName="offre_produits"
+                                 constraintName="fk_offre_produits_offre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="offre"/>
+
+        <addForeignKeyConstraint baseColumnNames="produits_id"
+                                 baseTableName="offre_produits"
+                                 constraintName="fk_offre_produits_produits_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produit"/>
+        
+        <addForeignKeyConstraint baseColumnNames="grille_tarifaire_id"
+                                 baseTableName="offre"
+                                 constraintName="fk_offre_grille_tarifaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="grille_tarifaire"/>
+
+    </changeSet>
+</databaseChangeLog>

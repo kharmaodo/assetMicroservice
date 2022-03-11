@@ -1,0 +1,367 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="a810340 (generated)" id="1634162157686-1">
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="clientPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP"/>
+            <column name="adresse" type="VARCHAR(255)"/>
+            <column name="code" type="VARCHAR(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="gestionnaire" type="VARCHAR(255)"/>
+            <column name="ninea" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_fm" type="VARCHAR(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_virtuel" type="VARCHAR(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="raison_sociale" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registre_comm" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telephone" type="VARCHAR(9)"/>
+            <column name="ville" type="VARCHAR(255)"/>
+            <column name="country_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-2">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="countryPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="devise" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="indicatif" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-3">
+        <createTable tableName="employe">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="employePK"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="fonction" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prenom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT"/>
+            <column name="groupe_id" type="BIGINT"/>
+            <column name="ligne_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-4">
+        <createTable tableName="grille_tarifaire">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="grille_tarifairePK"/>
+            </column>
+            <column name="go_data" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_appel" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sms" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_tarification" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-5">
+        <createTable tableName="groupe">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="groupePK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="periodicite" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT"/>
+            <column name="produit_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-6">
+        <createTable tableName="ligne">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="lignePK"/>
+            </column>
+            <column name="imsi" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="VARCHAR(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT"/>
+            <column name="offre_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-7">
+        <createTable tableName="ligne_services">
+            <column name="ligne_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="services_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-8">
+        <createTable tableName="offre">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="offrePK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="duree_engagement" type="INT"/>
+            <column name="mode_paiement" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="montant" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_offre" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grille_tarifaire_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-9">
+        <createTable tableName="offre_clients">
+            <column name="offre_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="clients_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-10">
+        <createTable tableName="offre_produits">
+            <column name="offre_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="produits_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-11">
+        <createTable tableName="produit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="produitPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP"/>
+            <column name="credit" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="go_data" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_appel" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sms" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_produit" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-12">
+        <createTable tableName="selfcare_parameter">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="selfcare_parameterPK"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="several_values" type="BOOLEAN"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="valeur" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-13">
+        <createTable tableName="selfcare_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="selfcare_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="TIMESTAMP"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-14">
+        <createTable tableName="selfcare_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-15">
+        <createTable tableName="service">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="servicePK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="service_code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="service_default" type="BOOLEAN"/>
+            <column name="service_name" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-16">
+        <createTable tableName="solution">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="solutionPK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-17">
+        <addUniqueConstraint columnNames="code" constraintName="UC_CLIENTCODE_COL" tableName="client"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-18">
+        <addUniqueConstraint columnNames="ninea" constraintName="UC_CLIENTNINEA_COL" tableName="client"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-19">
+        <addUniqueConstraint columnNames="raison_sociale" constraintName="UC_CLIENTRAISON_SOCIALE_COL" tableName="client"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-20">
+        <addUniqueConstraint columnNames="ligne_id" constraintName="UC_EMPLOYELIGNE_ID_COL" tableName="employe"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-21">
+        <addUniqueConstraint columnNames="nom" constraintName="UC_GROUPENOM_COL" tableName="groupe"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-22">
+        <addUniqueConstraint columnNames="imsi" constraintName="UC_LIGNEIMSI_COL" tableName="ligne"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-23">
+        <addUniqueConstraint columnNames="numero" constraintName="UC_LIGNENUMERO_COL" tableName="ligne"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-24">
+        <addForeignKeyConstraint baseColumnNames="clients_id" baseTableName="offre_clients" constraintName="FK2y45phvh6ok1067eixnm5xlav" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-25">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="selfcare_persistent_audit_evt_data" constraintName="FK5eby8adwjo3ogi23tvuqu187b" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="selfcare_persistent_audit_event" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-26">
+        <addForeignKeyConstraint baseColumnNames="offre_id" baseTableName="offre_clients" constraintName="FK6max23kaf5jq2u8cwbslsdtve" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="offre" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-27">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="employe" constraintName="FK8oaxebounxgfh828n4tl5aabx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-28">
+        <addForeignKeyConstraint baseColumnNames="offre_id" baseTableName="offre_produits" constraintName="FKa206mwdnpwi8t8ldqv3pfb51s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="offre" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-29">
+        <addForeignKeyConstraint baseColumnNames="produit_id" baseTableName="groupe" constraintName="FKa5farf5x5p1k9tq4m34flas22" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="produit" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-30">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="groupe" constraintName="FKbxxsw206ek7ivo23obgi6kelh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-31">
+        <addForeignKeyConstraint baseColumnNames="ligne_id" baseTableName="ligne_services" constraintName="FKcfvlcs9whtwpcxx8rm01kghn9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ligne" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-32">
+        <addForeignKeyConstraint baseColumnNames="produits_id" baseTableName="offre_produits" constraintName="FKe98sv7jalkdf232rqn83vdnou" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="produit" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-33">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="client" constraintName="FKevdwlrxhbct07e6dighauj6er" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="country" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-34">
+        <addForeignKeyConstraint baseColumnNames="grille_tarifaire_id" baseTableName="offre" constraintName="FKi1u7ejmabhos8tniwy217usod" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="grille_tarifaire" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-35">
+        <addForeignKeyConstraint baseColumnNames="ligne_id" baseTableName="employe" constraintName="FKimgx0843ay612f2vfkup78ylj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ligne" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-36">
+        <addForeignKeyConstraint baseColumnNames="services_id" baseTableName="ligne_services" constraintName="FKlodhfakmrlrc8bhtxnn9ygsg8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="service" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-37">
+        <addForeignKeyConstraint baseColumnNames="groupe_id" baseTableName="employe" constraintName="FKmcd74nygsdgvorh2m2n5p0ssb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="groupe" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-38">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="produit" constraintName="FKq1naeqxul11ayd0h7dy1vu5s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-39">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="ligne" constraintName="FKr1nvk60k40201ibhog8t9ots" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="a810340 (generated)" id="1634162157686-40">
+        <addForeignKeyConstraint baseColumnNames="offre_id" baseTableName="ligne" constraintName="FKrvgr8nfseoyaacqow7nar83lm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="offre" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

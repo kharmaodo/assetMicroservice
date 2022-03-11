@@ -1,0 +1,4 @@
+id;nom;description;periodicite;client_id;produit_id;status
+1;Groupe 1;Description du groupe;MENSUELLE;1;1;ACTIVE
+2;Groupe 2;Description du groupe;HEBDOMADAIRE;1;2;ACTIVE
+3;Groupe 3;Description du groupe;QUOTIDIEN;1;1;ACTIVE
